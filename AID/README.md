@@ -13,7 +13,14 @@ A complete identity and access management setup in Microsoft Azure — the most 
 
 ## Scripts
 
-_Coming soon — scripts pending upload._
+- [`create-aid-users.ps1`](./create-aid-users.ps1) — creates the 3 departmental test users
+- [`create-aid-security-groups.ps1`](./create-aid-security-groups.ps1) — creates the 3 security groups
+- [`assign-aid-group-members.ps1`](./assign-aid-group-members.ps1) — maps users to their group
+- [`assign-aid-rbac-roles.ps1`](./assign-aid-rbac-roles.ps1) — built-in + custom RBAC role assignment
+- [`configure-aid-mfa.ps1`](./configure-aid-mfa.ps1) — registers HR-Team for SMS MFA
+- [`create-aid-conditional-access.ps1`](./create-aid-conditional-access.ps1) — the 3 Conditional Access policies
+
+_Placeholder files pending your real script content — see each file for what to paste in._
 
 ## Status
 

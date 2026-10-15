@@ -21,7 +21,11 @@ Real Azure infrastructure — networking, virtual machines, and network security
 
 ## Scripts
 
-_Coming soon — scripts pending upload._
+- [`create-infra-network.ps1`](./create-infra-network.ps1) — VNet + WebSubnet + DBSubnet
+- [`create-infra-vms.ps1`](./create-infra-vms.ps1) — WebVM + DBVM, array-driven
+- [`create-infra-nsg-rules.ps1`](./create-infra-nsg-rules.ps1) — NSG rules for both VMs
+
+_Placeholder files pending your real script content — see each file for what to paste in._
 
 ## Status
 

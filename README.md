@@ -8,7 +8,7 @@ Hands-on Azure administration labs, built in a personal lab environment and auto
 |---|---|---|
 | 🔐 [AID — Azure Identity & Access Management](./AID) | ✅ Complete | Entra ID, RBAC, PowerShell, MFA, Conditional Access |
 | 🏗️ [INFRA — Azure Infrastructure Deployment](./INFRA) | 🟡 In Progress | Azure Networking, VNet & Subnets, PowerShell, NSGs, Virtual Machines |
-| 💻 M365 — Microsoft 365 & Intune | ⬜ Not Started | Intune, M365 |
+| 💻 [M365 — Microsoft 365 & Intune](./M365) | ✅ Complete | Intune, M365, PowerShell |
 | 📧 [EXO — Exchange Online Administration](./EXO) | ✅ Complete | Exchange Online, PowerShell |
 | 🛡️ [SECOPS — Monitoring & Security](./SECOPS) | 🟡 In Progress | Azure Monitor, Defender for Cloud, Log Analytics |
 

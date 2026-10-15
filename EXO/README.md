@@ -13,7 +13,14 @@ Mailbox and mail-flow administration in Exchange Online, using certificate-based
 
 ## Scripts
 
-_Coming soon — scripts pending upload._
+- [`create-exo-certificate.ps1`](./create-exo-certificate.ps1) — self-signed cert for app-only auth
+- [`assign-exo-role.ps1`](./assign-exo-role.ps1) — Exchange Administrator role via Graph
+- [`connect-exo.ps1`](./connect-exo.ps1) — cert-based Connect-ExchangeOnline session
+- [`create-shared-mailboxes.ps1`](./create-shared-mailboxes.ps1) — shared mailboxes + Full Access/Send As
+- [`create-distribution-groups.ps1`](./create-distribution-groups.ps1) — distribution groups + members
+- [`create-mail-flow-rules.ps1`](./create-mail-flow-rules.ps1) — password-block + disclaimer transport rules
+
+_Placeholder files pending your real script content — see each file for what to paste in._
 
 ## Status
 
