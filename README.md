@@ -1,6 +1,6 @@
 # azure-labs
 
-Hands-on Azure administration labs, built in a personal lab environment and automated with PowerShell (Az module). Each project mirrors a core Azure Admin responsibility — identity, networking, security, and M365 — with reusable scripts and before/after proof.
+Hands-on Azure administration labs, built in a personal lab environment and automated with PowerShell (Az module). Each project mirrors a core Azure Admin responsibility — identity, networking, M365, Exchange Online, and monitoring/security — with reusable scripts and before/after proof.
 
 ## Projects
 
