@@ -10,7 +10,8 @@
 #>
 
 param(
-    [string]$GroupName = "IT-Admins"
+    [string]$GroupName = "IT-Admins",
+    [string]$WallpaperImageUrl = "<your-hosted-wallpaper-image-url>"
 )
 
 try {
@@ -30,7 +31,7 @@ try {
             displayName                    = "Windows 11 Restrictions"
             description                    = "Blocks USB storage and sets the managed desktop wallpaper"
             usbBlocked                     = $true
-            personalizationDesktopImageUrl = "https://drive.google.com/thumbnail?id=18OI-tc-jqWazuU7VHMphPDRC2rtr8mgX&sz=w1920-h1080"
+            personalizationDesktopImageUrl = $WallpaperImageUrl
         },
         @{
             "@odata.type"                       = "#microsoft.graph.windowsUpdateForBusinessConfiguration"
