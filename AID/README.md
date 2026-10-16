@@ -20,8 +20,6 @@ A complete identity and access management setup in Microsoft Azure — the most 
 - [`configure-aid-mfa.ps1`](./configure-aid-mfa.ps1) — registers HR-Team for SMS MFA
 - [`create-aid-conditional-access.ps1`](./create-aid-conditional-access.ps1) — the 3 Conditional Access policies
 
-_Placeholder files pending your real script content — see each file for what to paste in._
-
 ## Status
 
 ✅ Complete

@@ -20,8 +20,6 @@ Mailbox and mail-flow administration in Exchange Online, using certificate-based
 - [`create-distribution-groups.ps1`](./create-distribution-groups.ps1) — distribution groups + members
 - [`create-mail-flow-rules.ps1`](./create-mail-flow-rules.ps1) — password-block + disclaimer transport rules
 
-_Placeholder files pending your real script content — see each file for what to paste in._
-
 ## Status
 
 ✅ Complete

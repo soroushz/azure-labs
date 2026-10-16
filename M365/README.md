@@ -21,8 +21,6 @@ A Windows 11 Intune lab built end to end for real device management — enrollme
 - [`create-app-deployment.ps1`](./create-app-deployment.ps1) — Microsoft 365 Apps deployment
 - [`invoke-remote-action.ps1`](./invoke-remote-action.ps1) — Retire / Wipe remote actions
 
-_Placeholder files pending your real script content — see each file for what to paste in._
-
 ## Status
 
 ✅ Complete

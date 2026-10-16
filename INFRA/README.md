@@ -25,8 +25,6 @@ Real Azure infrastructure — networking, virtual machines, and network security
 - [`create-infra-vms.ps1`](./create-infra-vms.ps1) — WebVM + DBVM, array-driven
 - [`create-infra-nsg-rules.ps1`](./create-infra-nsg-rules.ps1) — NSG rules for both VMs
 
-_Placeholder files pending your real script content — see each file for what to paste in._
-
 ## Status
 
 🟡 In Progress

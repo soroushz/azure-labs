@@ -12,10 +12,10 @@ Real-time monitoring and threat detection for Azure infrastructure — watching 
 
 ## Scripts
 
-- `create-lab-vm.ps1` — provisions the lab VM used across this project (Standard HDD disk, Standard SKU public IP, explicit RDP rule)
-- `create-monitor-alert.ps1` — creates the Action Group and Metric Alert Rule
-- `enable-defender-plans.ps1` — enables Defender for Cloud's Standard plan
-- `create-log-analytics.ps1` — creates the Log Analytics workspace and routes VM metrics into it
+- [`create-lab-vm.ps1`](./create-lab-vm.ps1) — provisions the lab VM used across this project (Standard HDD disk, Standard SKU public IP, explicit RDP rule)
+- [`create-monitor-alert.ps1`](./create-monitor-alert.ps1) — creates the Action Group and Metric Alert Rule
+- [`enable-defender-plans.ps1`](./enable-defender-plans.ps1) — enables Defender for Cloud's Standard plan
+- [`create-log-analytics.ps1`](./create-log-analytics.ps1) — creates the Log Analytics workspace and routes VM metrics into it
 
 ## Status
 
