@@ -23,9 +23,9 @@ Real Azure infrastructure — networking, virtual machines, and network security
 
 Run in order, signed in with the Az module (`Connect-AzAccount`) as an account with Contributor on the subscription.
 
-- `01-networking.ps1` — creates the resource group (if missing) and the VNet with `WebSubnet` / `DBSubnet`
-- `02-deploy-vms.ps1` — deploys `WebVM` (Windows Server 2022) and `DBVM` (Ubuntu 22.04); admin credentials are entered through a secure prompt at runtime
-- `03-nsg-rules.ps1` — applies the NSG rules from the summary table above
+- [`01-networking.ps1`](./01-networking.ps1) — creates the resource group (if missing) and the VNet with `WebSubnet` / `DBSubnet`
+- [`02-deploy-vms.ps1`](./02-deploy-vms.ps1) — deploys `WebVM` (Windows Server 2022) and `DBVM` (Ubuntu 22.04); admin credentials are entered through a secure prompt at runtime
+- [`03-nsg-rules.ps1`](./03-nsg-rules.ps1) — applies the NSG rules from the summary table above
 
 ## Status
 

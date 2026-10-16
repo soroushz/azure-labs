@@ -18,10 +18,10 @@ A Windows 11 Intune lab built end to end for real device management — enrollme
 
 All four scripts need an active Microsoft Graph session first (`connect-azure.ps1` in [AID](../AID)).
 
-- `create-compliance-policy.ps1` — creates the Windows 11 Baseline Compliance policy (BitLocker, strong password, minimum OS build) and assigns it to `IT-Admins`
-- `create-config-profiles.ps1` — creates the Windows 11 Restrictions and Windows 11 Update Ring profiles and assigns them to `IT-Admins`
-- `create-app-deployment.ps1` — deploys Microsoft 365 Apps for Windows as a required install via the Graph beta endpoint
-- `invoke-remote-action.ps1` — sends a Lock, Retire or Wipe remote action to a managed device by name
+- [`create-compliance-policy.ps1`](./create-compliance-policy.ps1) — creates the Windows 11 Baseline Compliance policy (BitLocker, strong password, minimum OS build) and assigns it to `IT-Admins`
+- [`create-config-profiles.ps1`](./create-config-profiles.ps1) — creates the Windows 11 Restrictions and Windows 11 Update Ring profiles and assigns them to `IT-Admins`
+- [`create-app-deployment.ps1`](./create-app-deployment.ps1) — deploys Microsoft 365 Apps for Windows as a required install via the Graph beta endpoint
+- [`invoke-remote-action.ps1`](./invoke-remote-action.ps1) — sends a Lock, Retire or Wipe remote action to a managed device by name
 
 ## Status
 
