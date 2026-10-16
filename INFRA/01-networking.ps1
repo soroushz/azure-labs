@@ -17,7 +17,7 @@ $subnets = @(
 $rg = Get-AzResourceGroup -Name $resourceGroup -ErrorAction SilentlyContinue
 if (-not $rg) {
     try {
-        New-AzResourceGroup -Name $resourceGroup -Location $location
+        New-AzResourceGroup -Name $resourceGroup -Location $location -ErrorAction Stop
         Write-Host "Resource group '$resourceGroup' created" -ForegroundColor Green
     } catch {
         Write-Host "Failed to create resource group: $_" -ForegroundColor Red
@@ -44,7 +44,8 @@ try {
         -ResourceGroupName $resourceGroup `
         -Location $location `
         -AddressPrefix $vnetAddressSpace `
-        -Subnet $subnetConfigs
+        -Subnet $subnetConfigs `
+        -ErrorAction Stop
 
     Write-Host "VNet '$vnetName' created with $($subnetConfigs.Count) subnets" -ForegroundColor Cyan
 } catch {

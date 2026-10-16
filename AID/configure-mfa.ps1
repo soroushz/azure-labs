@@ -1,19 +1,24 @@
-﻿# Get HR-Team members
-$groupId = (Get-MgGroup -Filter "displayName eq 'HR-Team'").Id 
-$members = (Get-MgGroupMember -GroupId $groupId)
+﻿# Each HR-Team member's own phone number for SMS MFA registration.
+# Add more entries here to cover additional team members.
+$phoneAssignments = @(
+	@{ UserPrincipalName = "sarah.johnson@yourtenant.onmicrosoft.com"; PhoneNumber = "+1 4165550100" }
+)
 
-foreach ($member in $members) {
-	try { 
-		# Enable SMS authentication for each HR-Team member
+foreach ($assignment in $phoneAssignments) {
+	try {
+		$user = Get-MgUser -UserId $assignment.UserPrincipalName -ErrorAction Stop
+
+		# Enable SMS authentication for this member
 		New-MgUserAuthenticationPhoneMethod `
-			-UserId $member.Id `
+			-UserId $user.Id `
 			-PhoneType "mobile" `
-			-PhoneNumber "+1 4165550100"
-		Write-Host "SMS MFA enabled for $($member.Id)" -ForegroundColor Green 
+			-PhoneNumber $assignment.PhoneNumber `
+			-ErrorAction Stop
+		Write-Host "SMS MFA enabled for $($assignment.UserPrincipalName)" -ForegroundColor Green
 	} catch {
-	    	Write-Host "Failed for $($member.Id): $_" -ForegroundColor Red 
+		Write-Host "Failed for $($assignment.UserPrincipalName): $_" -ForegroundColor Red
 	}
 }
 
-Write-Host "MFA configuration complete for HR-Team!" -ForegroundColor Cyan 
+Write-Host "MFA configuration complete!" -ForegroundColor Cyan
 

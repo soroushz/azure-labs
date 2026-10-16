@@ -4,19 +4,29 @@ $assignments = @(
 )
 
 # Get subscription ID dynamically
-$subId = (Get-AzSubscription -SubscriptionName "Azure Subscription 1").Id
+try {
+    $subId = (Get-AzSubscription -SubscriptionName "Azure Subscription 1" -ErrorAction Stop).Id
+} catch {
+    Write-Host "Could not find subscription 'Azure Subscription 1': $_" -ForegroundColor Red
+    return
+}
 
 # Process each assignment
 foreach ($a in $assignments) {
-    $groupId = (Get-MgGroup -Filter "displayName eq '$($a.Group)'").Id
-    
-    if ($groupId) {
+    try {
+        $groupId = (Get-MgGroup -Filter "displayName eq '$($a.Group)'" -ErrorAction Stop).Id
+
+        if (-not $groupId) {
+            throw "Group '$($a.Group)' not found"
+        }
+
         New-AzRoleAssignment `
             -ObjectId $groupId `
             -RoleDefinitionName $a.Role `
-            -Scope "/subscriptions/$subId"
+            -Scope "/subscriptions/$subId" `
+            -ErrorAction Stop
         Write-Host "$($a.Group) assigned $($a.Role) role" -ForegroundColor Green
-    } else {
-        Write-Host "Group '$($a.Group)' not found" -ForegroundColor Red
+    } catch {
+        Write-Host "Failed to assign $($a.Role) to $($a.Group): $_" -ForegroundColor Red
     }
 }

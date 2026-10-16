@@ -7,15 +7,22 @@ param(
     [Parameter(Mandatory)][string]$ExcludeAdminUPN  # admin account excluded from the policy
 )
 
-$excludeAdminId = (Get-MgUser -Filter "userPrincipalName eq '$excludeAdminUPN'").Id
+try {
+    if (-not (Get-MgContext)) {
+        throw "Not connected to Microsoft Graph. Run .\connect-azure.ps1 first."
+    }
 
-if (-not $excludeAdminId) {
-    Write-Host "Could not find admin account '$excludeAdminUPN' - check the UPN and try again." -ForegroundColor Red
+    $excludeAdminId = (Get-MgUser -Filter "userPrincipalName eq '$ExcludeAdminUPN'" -ErrorAction Stop).Id
+    if (-not $excludeAdminId) {
+        throw "Could not find admin account '$ExcludeAdminUPN' - check the UPN and try again."
+    }
+} catch {
+    Write-Host "Failed: $_" -ForegroundColor Red
     return
 }
 
 try {
-    $existingLocation = (Invoke-MgGraphRequest -Method GET -Uri "https://graph.microsoft.com/v1.0/identity/conditionalAccess/namedLocations").value |
+    $existingLocation = (Invoke-MgGraphRequest -Method GET -Uri "https://graph.microsoft.com/v1.0/identity/conditionalAccess/namedLocations" -ErrorAction Stop).value |
         Where-Object { $_.displayName -eq "Canada" }
 
     if ($existingLocation) {
@@ -27,7 +34,7 @@ try {
             displayName                       = "Canada"
             countriesAndRegions               = @("CA")
             includeUnknownCountriesAndRegions = $false
-        } -ContentType "application/json"
+        } -ContentType "application/json" -ErrorAction Stop
 
         $locationId = $namedLocation.id
         Write-Host "Named location created: Canada (id: $locationId)" -ForegroundColor Green
@@ -61,7 +68,7 @@ try {
             operator        = "OR"
             builtInControls = @("block")
         }
-    } -ContentType "application/json"
+    } -ContentType "application/json" -ErrorAction Stop
     Write-Host "Created: CA02-Block-OutsideCanada" -ForegroundColor Green
 } catch {
     Write-Host "Failed to create CA02-Block-OutsideCanada: $_" -ForegroundColor Red

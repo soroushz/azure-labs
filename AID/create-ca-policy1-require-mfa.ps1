@@ -5,10 +5,17 @@ param(
     [Parameter(Mandatory)][string]$ExcludeAdminUPN  # admin account excluded from the policy
 )
 
-$excludeAdminId = (Get-MgUser -Filter "userPrincipalName eq '$excludeAdminUPN'").Id
+try {
+    if (-not (Get-MgContext)) {
+        throw "Not connected to Microsoft Graph. Run .\connect-azure.ps1 first."
+    }
 
-if (-not $excludeAdminId) {
-    Write-Host "Could not find admin account '$excludeAdminUPN' - check the UPN and try again." -ForegroundColor Red
+    $excludeAdminId = (Get-MgUser -Filter "userPrincipalName eq '$ExcludeAdminUPN'" -ErrorAction Stop).Id
+    if (-not $excludeAdminId) {
+        throw "Could not find admin account '$ExcludeAdminUPN' - check the UPN and try again."
+    }
+} catch {
+    Write-Host "Failed: $_" -ForegroundColor Red
     return
 }
 
@@ -38,7 +45,7 @@ foreach ($p in $policies) {
                 operator        = "OR"
                 builtInControls = $p.BuiltInControls
             }
-        } -ContentType "application/json"
+        } -ContentType "application/json" -ErrorAction Stop
         Write-Host "Created: $($p.DisplayName)" -ForegroundColor Green
     } catch {
         Write-Host "Failed to create $($p.DisplayName): $_" -ForegroundColor Red

@@ -1,5 +1,6 @@
-﻿# Get subscription ID
-$subId = (Get-AzSubscription -SubscriptionName "Azure Subscription 1").Id
+﻿try {
+# Get subscription ID
+$subId = (Get-AzSubscription -SubscriptionName "Azure Subscription 1" -ErrorAction Stop).Id
 
 # Create role definition as JSON (new format)
 $roleJson = @"
@@ -30,5 +31,8 @@ $roleFile = Join-Path $env:TEMP "custom-role.json"
 $roleJson | Out-File $roleFile
 
 # Create the role from JSON file
-New-AzRoleDefinition -InputFile $roleFile
+New-AzRoleDefinition -InputFile $roleFile -ErrorAction Stop
 Write-Host "Custom role 'VM Reader Plus' created!" -ForegroundColor Green
+} catch {
+    Write-Host "Failed to create custom role: $_" -ForegroundColor Red
+}

@@ -16,10 +16,14 @@ if (-not $tenantId -or -not $clientId) {
 $secureSecret = (Get-Credential -UserName $clientId -Message "Enter the client secret as the password").Password
 $credential = New-Object System.Management.Automation.PSCredential($clientId, $secureSecret)
 
-# Connect to Microsoft Graph
-Connect-MgGraph -TenantId $tenantId -ClientSecretCredential $credential
-Write-Host "Connected to Microsoft Graph!" -ForegroundColor Green
+try {
+    # Connect to Microsoft Graph
+    Connect-MgGraph -TenantId $tenantId -ClientSecretCredential $credential -ErrorAction Stop
+    Write-Host "Connected to Microsoft Graph!" -ForegroundColor Green
 
-# Connect to Az
-Connect-AzAccount -ServicePrincipal -TenantId $tenantId -Credential $credential
-Write-Host "Connected to Az!" -ForegroundColor Green
+    # Connect to Az
+    Connect-AzAccount -ServicePrincipal -TenantId $tenantId -Credential $credential -ErrorAction Stop
+    Write-Host "Connected to Az!" -ForegroundColor Green
+} catch {
+    Write-Host "Failed to connect: $_" -ForegroundColor Red
+}
