@@ -29,4 +29,4 @@ Run in order, signed in with the Az module (`Connect-AzAccount`) as an account w
 
 ## Status
 
-🟡 In Progress
+✅ Complete
