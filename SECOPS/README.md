@@ -1,6 +1,6 @@
 # 🛡️ SECOPS — Monitoring & Security
 
-`Azure Monitor` `Defender for Cloud` `Log Analytics` `KQL` `PowerShell`
+`Azure Monitor` `Defender for Cloud` `Log Analytics` `PowerShell`
 
 Real-time monitoring and threat detection for Azure infrastructure — watching for problems instead of hoping nothing breaks. Built in a lab environment and automated end-to-end with PowerShell (Az module).
 
@@ -8,7 +8,7 @@ Real-time monitoring and threat detection for Azure infrastructure — watching 
 
 - **Monitor Alerts** — an Action Group (email notification) and a Metric Alert Rule watching VM CPU, checked every minute over a 5-minute window. Tested for real: spiked the VM's CPU and confirmed the alert actually fired and the email actually landed.
 - **Defender for Cloud** — enabled the Standard plan (Defender for Servers) on the subscription, turning basic free-tier posture checks into real threat detection with actual security recommendations against the VM.
-- **Log Analytics & KQL** — a Log Analytics workspace with VM metrics routed into it via a diagnostic setting, queried with KQL to pull real CPU history back out.
+- **Log Analytics** — a Log Analytics workspace with VM metrics routed into it via a diagnostic setting, so there's a queryable history beyond just alerts and graphs.
 
 ## Scripts
 
@@ -19,4 +19,4 @@ Real-time monitoring and threat detection for Azure infrastructure — watching 
 
 ## Status
 
-🟡 In Progress
+✅ Complete

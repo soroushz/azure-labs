@@ -1,7 +1,8 @@
 <#
 .SYNOPSIS
     Creates a Log Analytics workspace and routes a VM's metrics into it
-    via a diagnostic setting, so the CPU data becomes queryable with KQL.
+    via a diagnostic setting, so the CPU data is captured as a queryable
+    historical record instead of just showing up in alerts and graphs.
     Array-driven so more workspaces/VMs could be added later without
     touching the logic.
 #>
